@@ -4,7 +4,7 @@ greeting: 	.asciiz "Our program shows a map temerature increase in the US\n"
 promptYear:	.asciiz "Please enter the year you want to see the data: "
 promptState:	.asciiz "Please enter the state you want to see: "
 maxLength: 	.space 50
-filePath: 	.asciiz "
+filePath: 	.asciiz ""
 
 
 
