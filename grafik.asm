@@ -1590,6 +1590,10 @@ key_printer_readLoop:
 	lb $t1, print_buffer_char		# load read character into $t1
 	li $t2, ' '			# load space into t2 for comparison
 	li $t3, '\n'			# load newline into t3 for comparison
+	li $t6, 13			# load carriage return into $t6 for comparison (to deal with CRLF files)
+	beq $t1, $t6, key_printer_readLoop	# if CR detected, reread to catch LF (new line)
+							# for newlines, Windows uses both CR and LF, Unix only uses LF.
+							# if we only catch LF, CR will be read as part of the number and this is incorrect
 	beq $t1, $t2, key_printer_readEnd	# end read if at space
 	beq $t1, $t3, key_printer_readNewLine	# end read if at newline
 					# else
