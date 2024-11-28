@@ -1,8 +1,8 @@
 .data
 
-Alabama:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Alabama.txt"
-Alaska:			.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Alaska.txt"
-Arizona:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Arizona.txt"
+Alabama:		.asciiz	"States/Alabama.txt"
+Alaska:			.asciiz	"States/Alaska.txt"
+Arizona:		.asciiz	"States/Arizona.txt"
 buffer:	 		.space 200
 stateNameAlabama:	.asciiz	"Alabama"
 stateNameAlaska:	.asciiz	"Alaska"
@@ -22,12 +22,12 @@ testbuffer:		.space	4
 
 .text
 main:	
-	move $fp, $sp
-	addi $sp, $sp, -12
+	move $fp, $sp		# initialize frame pointer
+	addi $sp, $sp, -12	# allocate 12 bytes in stack
 	
-	jal getInput
+	jal getInput		# get state from user
 	
-	li $v0, 4
+	li $v0, 4		# print a newline
 	la $a0, newline
 	syscall
 	
@@ -53,6 +53,7 @@ main:
 	li $v0, 10
 	syscall
 
+# ask user for state
 getInput:
 	la $a0, stateprompt		#print state prompt
 	li $v0, 4
