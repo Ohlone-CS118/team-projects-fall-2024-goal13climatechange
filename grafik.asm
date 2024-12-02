@@ -7,7 +7,7 @@
 #	256 x 128 x 4 = 524288 bytes
 	display:	.space	131072	# allocate space for 256x128
 	print_buffer:		.space 4 # character buffer, 4 bytes
-	print_buffer_char:	.space 1 # character buffer, 1 byte
+	print_buffer_char:	.space 4 # character buffer, 4 bytes (to prevent word alignment issues)
 	boot:		.asciiz "graphics/boot128.ppm"
 	map:		.asciiz "graphics/map128.ppm"
 	map_alabama:	.asciiz "graphics/alabama.pbm"
@@ -77,6 +77,11 @@ define:
 	.eqv	WHITE	0x00FFFFFF
 
 .text
+# global declarations
+.globl draw_boot
+.globl self_test
+.globl draw_map
+
 main:
 	move $fp, $sp	# initialize stack, move frame pointer to end of stack
 	
@@ -184,8 +189,6 @@ self_test:
 	jal draw_texas
 	li $a0, RED
 	jal draw_utah
-	li $a0, RED
-	jal draw_vermont
 	li $a0, RED
 	jal draw_virginia
 	li $a0, RED
