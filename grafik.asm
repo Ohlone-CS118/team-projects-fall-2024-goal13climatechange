@@ -1342,9 +1342,27 @@ draw_darksouls:
 # postcondition:
 #	image written to display
 printer:
-	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
+	subi $sp, $sp, 80	# allocate space in stack to store $fp and $ra
 	sw $ra, 0($sp)		# backup return address
 	sw $fp, 4($sp)		# backup frame pointer
+	sw $s0, 8($sp)		# backup saved registers
+	sw $s1, 12($sp)
+	sw $s2, 16($sp)
+	sw $s3, 20($sp)
+	sw $s4, 24($sp)
+	sw $s5, 28($sp)
+	sw $s6, 32($sp)
+	sw $s7, 36($sp)
+	sw $t0, 40($sp)		# backup temp registers
+	sw $t1, 44($sp)
+	sw $t2, 48($sp)
+	sw $t3, 52($sp)
+	sw $t4, 56($sp)
+	sw $t5, 60($sp)
+	sw $t6, 64($sp)
+	sw $t7, 68($sp)
+	sw $t8, 72($sp)
+	sw $t9, 76($sp)
 	move $fp, $sp		# move frame pointer to point at current top of stack
 	
 	move $s0, $a0		# store file path
@@ -1443,7 +1461,25 @@ printer_end:
 
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
-	addi $sp, $sp, 8	# deallocate space in stack
+	lw $s0, 8($fp)		# restore saved registers
+	lw $s1, 12($fp)
+	lw $s2, 16($fp)
+	lw $s3, 20($fp)
+	lw $s4, 24($fp)
+	lw $s5, 28($fp)
+	lw $s6, 32($fp)
+	lw $s7, 36($fp)
+	lw $t0, 40($fp)		# restore temp registers
+	lw $t1, 44($fp)
+	lw $t2, 48($fp)
+	lw $t3, 52($fp)
+	lw $t4, 56($fp)
+	lw $t5, 60($fp)
+	lw $t6, 64($fp)
+	lw $t7, 68($fp)
+	lw $t8, 72($fp)
+	lw $t9, 76($fp)
+	addi $sp, $sp, 80	# deallocate space in stack
 	jr $ra			# return
 	
 printer_read:	# read into $v0 until a whitespace or new line
@@ -1491,9 +1527,27 @@ printer_readEOF:
 # postcondition:
 #	image written to display
 key_printer:
-	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
+	subi $sp, $sp, 80	# allocate space in stack to store $fp and $ra
 	sw $ra, 0($sp)		# backup return address
 	sw $fp, 4($sp)		# backup frame pointer
+	sw $s0, 8($sp)		# backup saved registers
+	sw $s1, 12($sp)
+	sw $s2, 16($sp)
+	sw $s3, 20($sp)
+	sw $s4, 24($sp)
+	sw $s5, 28($sp)
+	sw $s6, 32($sp)
+	sw $s7, 36($sp)
+	sw $t0, 40($sp)		# backup temp registers
+	sw $t1, 44($sp)
+	sw $t2, 48($sp)
+	sw $t3, 52($sp)
+	sw $t4, 56($sp)
+	sw $t5, 60($sp)
+	sw $t6, 64($sp)
+	sw $t7, 68($sp)
+	sw $t8, 72($sp)
+	sw $t9, 76($sp)
 	move $fp, $sp		# move frame pointer to point at current top of stack
 	
 	move $s0, $a0		# store file path
@@ -1587,7 +1641,25 @@ key_printer_end:
 
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
-	addi $sp, $sp, 8	# deallocate space in stack
+	lw $s0, 8($fp)		# restore saved registers
+	lw $s1, 12($fp)
+	lw $s2, 16($fp)
+	lw $s3, 20($fp)
+	lw $s4, 24($fp)
+	lw $s5, 28($fp)
+	lw $s6, 32($fp)
+	lw $s7, 36($fp)
+	lw $t0, 40($fp)		# restore temp registers
+	lw $t1, 44($fp)
+	lw $t2, 48($fp)
+	lw $t3, 52($fp)
+	lw $t4, 56($fp)
+	lw $t5, 60($fp)
+	lw $t6, 64($fp)
+	lw $t7, 68($fp)
+	lw $t8, 72($fp)
+	lw $t9, 76($fp)
+	addi $sp, $sp, 80	# deallocate space in stack
 	jr $ra			# return
 	
 key_printer_read:	# read into $v0 until a whitespace or new line
