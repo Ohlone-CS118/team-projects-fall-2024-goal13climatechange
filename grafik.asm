@@ -10,58 +10,58 @@
 	print_buffer_char:	.space 1 # character buffer, 1 byte
 	boot:		.asciiz "graphics/boot128.ppm"
 	map:		.asciiz "graphics/map128.ppm"
-	alabama:	.asciiz "graphics/alabama.pbm"
-	alaska:		.asciiz "graphics/alaska.pbm"
-	arizona:	.asciiz "graphics/arizona.pbm"
-	arkansas:	.asciiz "graphics/arkansas.pbm"
-	california:	.asciiz "graphics/california.pbm"
-	colorado:	.asciiz "graphics/colorado.pbm"
-	connecticut:	.asciiz "graphics/connecticut.pbm"
-	delaware:	.asciiz "graphics/delaware.pbm"
-	darksouls:	.asciiz "graphics/darksouls.ppm"
-	florida:	.asciiz "graphics/florida.pbm"
-	georgia:	.asciiz "graphics/georgia.pbm"
-	hawaii:		.asciiz "graphics/hawaii.pbm"
-	idaho:		.asciiz "graphics/idaho.pbm"
-	illinois:	.asciiz "graphics/illinois.pbm"
-	indiana:	.asciiz "graphics/indiana.pbm"
-	iowa:		.asciiz "graphics/iowa.pbm"
-	kansas:		.asciiz "graphics/kansas.pbm"
-	kentucky:	.asciiz "graphics/kentucky.pbm"
-	louisiana:	.asciiz "graphics/louisiana.pbm"
-	maine:		.asciiz "graphics/maine.pbm"
-	maryland:	.asciiz "graphics/maryland.pbm"
-	massachusetts:	.asciiz "graphics/massachusetts.pbm"
-	michigan:	.asciiz "graphics/michigan.pbm"
-	minnesota:	.asciiz "graphics/minnesota.pbm"
-	mississippi:	.asciiz "graphics/mississippi.pbm"
-	missouri:	.asciiz "graphics/missouri.pbm"
-	montana:	.asciiz "graphics/montana.pbm"
-	nebraska:	.asciiz "graphics/nebraska.pbm"
-	nevada:		.asciiz "graphics/nevada.pbm"
-	newhampshire:	.asciiz "graphics/newhampshire.pbm"
-	newjersey:	.asciiz "graphics/newjersey.pbm"
-	newmexico:	.asciiz "graphics/newmexico.pbm"
-	newyork:	.asciiz "graphics/newyork.pbm"
-	northcarolina:	.asciiz "graphics/northcarolina.pbm"
-	northdakota:	.asciiz "graphics/northdakota.pbm"
-	ohio:		.asciiz "graphics/ohio.pbm"
-	oklahoma:	.asciiz "graphics/oklahoma.pbm"
-	oregon:		.asciiz "graphics/oregon.pbm"
-	pennsylvania:	.asciiz "graphics/pennsylvania.pbm"
-	rhodeisland:	.asciiz "graphics/rhodeisland.pbm"
-	southcarolina:	.asciiz "graphics/southcarolina.pbm"
-	southdakota:	.asciiz "graphics/southdakota.pbm"
-	tennessee:	.asciiz "graphics/tennessee.pbm"
-	texas:		.asciiz "graphics/texas.pbm"
-	utah:		.asciiz "graphics/utah.pbm"
-	vermont:	.asciiz "graphics/vermont.pbm"
-	virginia:	.asciiz "graphics/virginia.pbm"
-	washington:	.asciiz "graphics/washington.pbm"
-	washingtondc:	.asciiz "graphics/washingtondc.pbm"
-	westvirginia:	.asciiz "graphics/westvirginia.pbm"
-	wisconsin:	.asciiz "graphics/wisconsin.pbm"
-	wyoming:	.asciiz "graphics/wyoming.pbm"
+	map_alabama:	.asciiz "graphics/alabama.pbm"
+	map_alaska:		.asciiz "graphics/alaska.pbm"
+	map_arizona:	.asciiz "graphics/arizona.pbm"
+	map_arkansas:	.asciiz "graphics/arkansas.pbm"
+	map_california:	.asciiz "graphics/california.pbm"
+	map_colorado:	.asciiz "graphics/colorado.pbm"
+	map_connecticut:	.asciiz "graphics/connecticut.pbm"
+	map_delaware:	.asciiz "graphics/delaware.pbm"
+	map_darksouls:	.asciiz "graphics/darksouls.ppm"
+	map_florida:	.asciiz "graphics/florida.pbm"
+	map_georgia:	.asciiz "graphics/georgia.pbm"
+	map_hawaii:		.asciiz "graphics/hawaii.pbm"
+	map_idaho:		.asciiz "graphics/idaho.pbm"
+	map_illinois:	.asciiz "graphics/illinois.pbm"
+	map_indiana:	.asciiz "graphics/indiana.pbm"
+	map_iowa:		.asciiz "graphics/iowa.pbm"
+	map_kansas:		.asciiz "graphics/kansas.pbm"
+	map_kentucky:	.asciiz "graphics/kentucky.pbm"
+	map_louisiana:	.asciiz "graphics/louisiana.pbm"
+	map_maine:		.asciiz "graphics/maine.pbm"
+	map_maryland:	.asciiz "graphics/maryland.pbm"
+	map_massachusetts:	.asciiz "graphics/massachusetts.pbm"
+	map_michigan:	.asciiz "graphics/michigan.pbm"
+	map_minnesota:	.asciiz "graphics/minnesota.pbm"
+	map_mississippi:	.asciiz "graphics/mississippi.pbm"
+	map_missouri:	.asciiz "graphics/missouri.pbm"
+	map_montana:	.asciiz "graphics/montana.pbm"
+	map_nebraska:	.asciiz "graphics/nebraska.pbm"
+	map_nevada:		.asciiz "graphics/nevada.pbm"
+	map_newhampshire:	.asciiz "graphics/newhampshire.pbm"
+	map_newjersey:	.asciiz "graphics/newjersey.pbm"
+	map_newmexico:	.asciiz "graphics/newmexico.pbm"
+	map_newyork:	.asciiz "graphics/newyork.pbm"
+	map_northcarolina:	.asciiz "graphics/northcarolina.pbm"
+	map_northdakota:	.asciiz "graphics/northdakota.pbm"
+	map_ohio:		.asciiz "graphics/ohio.pbm"
+	map_oklahoma:	.asciiz "graphics/oklahoma.pbm"
+	map_oregon:		.asciiz "graphics/oregon.pbm"
+	map_pennsylvania:	.asciiz "graphics/pennsylvania.pbm"
+	map_rhodeisland:	.asciiz "graphics/rhodeisland.pbm"
+	map_southcarolina:	.asciiz "graphics/southcarolina.pbm"
+	map_southdakota:	.asciiz "graphics/southdakota.pbm"
+	map_tennessee:	.asciiz "graphics/tennessee.pbm"
+	map_texas:		.asciiz "graphics/texas.pbm"
+	map_utah:		.asciiz "graphics/utah.pbm"
+	map_vermont:	.asciiz "graphics/vermont.pbm"
+	map_virginia:	.asciiz "graphics/virginia.pbm"
+	map_washington:	.asciiz "graphics/washington.pbm"
+	map_washingtondc:	.asciiz "graphics/washingtondc.pbm"
+	map_westvirginia:	.asciiz "graphics/westvirginia.pbm"
+	map_wisconsin:	.asciiz "graphics/wisconsin.pbm"
+	map_wyoming:	.asciiz "graphics/wyoming.pbm"
 	
 define:
 # screen information
@@ -83,6 +83,16 @@ main:
 	#jal draw_boot
 
 	jal draw_map
+	jal self_test
+	
+	li $v0, 10	# exit safely
+	syscall
+
+self_test:
+	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
+	sw $ra, 0($sp)		# backup return address
+	sw $fp, 4($sp)		# backup frame pointer
+	move $fp, $sp		# move frame pointer to point at current top of stack
 
 	li $a0, RED
 	jal draw_alabama
@@ -189,9 +199,11 @@ main:
 	li $a0, RED
 	jal draw_wyoming
 	jal draw_darksouls
-	
-	li $v0, 10	# exit safely
-	syscall
+
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 8	# deallocate space in stack
+	jr $ra			# return
 
 # draw boot img
 # precondition: no
@@ -242,7 +254,7 @@ draw_washington:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, washington	# set image path
+	la $a0, map_washington	# set image path
 	li $a1, 62	# x-offset 0
 	li $a2, 6	# y-offset 0
 	jal key_printer
@@ -263,7 +275,7 @@ draw_oregon:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, oregon	# set image path
+	la $a0, map_oregon	# set image path
 	li $a1, 55	# x-offset 0
 	li $a2, 17	# y-offset 0
 	jal key_printer
@@ -284,7 +296,7 @@ draw_idaho:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, idaho	# set image path
+	la $a0, map_idaho	# set image path
 	li $a1, 79	# x-offset 0
 	li $a2, 10	# y-offset 0
 	jal key_printer
@@ -305,7 +317,7 @@ draw_montana:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, montana	# set image path
+	la $a0, map_montana	# set image path
 	li $a1, 88	# x-offset 0
 	li $a2, 11	# y-offset 0
 	jal key_printer
@@ -326,7 +338,7 @@ draw_wyoming:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, wyoming	# set image path
+	la $a0, map_wyoming	# set image path
 	li $a1, 98	# x-offset 0
 	li $a2, 32	# y-offset 0
 	jal key_printer
@@ -347,7 +359,7 @@ draw_northdakota:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, northdakota	# set image path
+	la $a0, map_northdakota	# set image path
 	li $a1, 124	# x-offset 0
 	li $a2, 16	# y-offset 0
 	jal key_printer
@@ -368,7 +380,7 @@ draw_southdakota:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, southdakota	# set image path
+	la $a0, map_southdakota	# set image path
 	li $a1, 123	# x-offset 0
 	li $a2, 30	# y-offset 0
 	jal key_printer
@@ -389,7 +401,7 @@ draw_minnesota:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, minnesota	# set image path
+	la $a0, map_minnesota	# set image path
 	li $a1, 146	# x-offset 0
 	li $a2, 16	# y-offset 0
 	jal key_printer
@@ -410,7 +422,7 @@ draw_michigan:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, michigan	# set image path
+	la $a0, map_michigan	# set image path
 	li $a1, 168	# x-offset 0
 	li $a2, 25	# y-offset 0
 	jal key_printer
@@ -431,7 +443,7 @@ draw_wisconsin:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, wisconsin	# set image path
+	la $a0, map_wisconsin	# set image path
 	li $a1, 160	# x-offset 0
 	li $a2, 27	# y-offset 0
 	jal key_printer
@@ -452,7 +464,7 @@ draw_newyork:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, newyork	# set image path
+	la $a0, map_newyork	# set image path
 	li $a1, 207	# x-offset 0
 	li $a2, 27	# y-offset 0
 	jal key_printer
@@ -473,7 +485,7 @@ draw_vermont:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, vermont	# set image path
+	la $a0, map_vermont	# set image path
 	li $a1, 223	# x-offset 0
 	li $a2, 26	# y-offset 0
 	jal key_printer
@@ -494,7 +506,7 @@ draw_newhampshire:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, newhampshire	# set image path
+	la $a0, map_newhampshire	# set image path
 	li $a1, 228	# x-offset 0
 	li $a2, 24	# y-offset 0
 	jal key_printer
@@ -515,7 +527,7 @@ draw_maine:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, maine	# set image path
+	la $a0, map_maine	# set image path
 	li $a1, 230	# x-offset 0
 	li $a2, 12	# y-offset 0
 	jal key_printer
@@ -536,7 +548,7 @@ draw_massachusetts:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, massachusetts	# set image path
+	la $a0, map_massachusetts	# set image path
 	li $a1, 226	# x-offset 0
 	li $a2, 34	# y-offset 0
 	jal key_printer
@@ -557,7 +569,7 @@ draw_rhodeisland:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, rhodeisland	# set image path
+	la $a0, map_rhodeisland	# set image path
 	li $a1, 230	# x-offset 0
 	li $a2, 39	# y-offset 0
 	jal key_printer
@@ -578,7 +590,7 @@ draw_connecticut:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, connecticut	# set image path
+	la $a0, map_connecticut	# set image path
 	li $a1, 226	# x-offset 0
 	li $a2, 40	# y-offset 0
 	jal key_printer
@@ -599,7 +611,7 @@ draw_nebraska:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, nebraska	# set image path
+	la $a0, map_nebraska	# set image path
 	li $a1, 122	# x-offset 0
 	li $a2, 44	# y-offset 0
 	jal key_printer
@@ -620,7 +632,7 @@ draw_iowa:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, iowa	# set image path
+	la $a0, map_iowa	# set image path
 	li $a1, 148	# x-offset 0
 	li $a2, 42	# y-offset 0
 	jal key_printer
@@ -641,7 +653,7 @@ draw_illinois:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, illinois	# set image path
+	la $a0, map_illinois	# set image path
 	li $a1, 166	# x-offset 0
 	li $a2, 46	# y-offset 0
 	jal key_printer
@@ -662,7 +674,7 @@ draw_indiana:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, indiana	# set image path
+	la $a0, map_indiana	# set image path
 	li $a1, 179	# x-offset 0
 	li $a2, 49	# y-offset 0
 	jal key_printer
@@ -683,7 +695,7 @@ draw_ohio:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, ohio	# set image path
+	la $a0, map_ohio	# set image path
 	li $a1, 188	# x-offset 0
 	li $a2, 46	# y-offset 0
 	jal key_printer
@@ -704,7 +716,7 @@ draw_pennsylvania:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, pennsylvania	# set image path
+	la $a0, map_pennsylvania	# set image path
 	li $a1, 203	# x-offset 0
 	li $a2, 42	# y-offset 0
 	jal key_printer
@@ -725,7 +737,7 @@ draw_newjersey:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, newjersey	# set image path
+	la $a0, map_newjersey	# set image path
 	li $a1, 221	# x-offset 0
 	li $a2, 45	# y-offset 0
 	jal key_printer
@@ -746,7 +758,7 @@ draw_delaware:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, delaware	# set image path
+	la $a0, map_delaware	# set image path
 	li $a1, 219	# x-offset 0
 	li $a2, 52	# y-offset 0
 	jal key_printer
@@ -767,7 +779,7 @@ draw_maryland:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, maryland	# set image path
+	la $a0, map_maryland	# set image path
 	li $a1, 214	# x-offset 0
 	li $a2, 53	# y-offset 0
 	jal key_printer
@@ -788,7 +800,7 @@ draw_washingtondc:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, washingtondc	# set image path
+	la $a0, map_washingtondc	# set image path
 	li $a1, 216	# x-offset 0
 	li $a2, 56	# y-offset 0
 	jal key_printer
@@ -809,7 +821,7 @@ draw_california:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, california	# set image path
+	la $a0, map_california	# set image path
 	li $a1, 52	# x-offset 0
 	li $a2, 36	# y-offset 0
 	jal key_printer
@@ -830,7 +842,7 @@ draw_nevada:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, nevada	# set image path
+	la $a0, map_nevada	# set image path
 	li $a1, 65	# x-offset 0
 	li $a2, 40	# y-offset 0
 	jal key_printer
@@ -851,7 +863,7 @@ draw_utah:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, utah	# set image path
+	la $a0, map_utah	# set image path
 	li $a1, 84	# x-offset 0
 	li $a2, 44	# y-offset 0
 	jal key_printer
@@ -872,7 +884,7 @@ draw_colorado:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, colorado	# set image path
+	la $a0, map_colorado	# set image path
 	li $a1, 103	# x-offset 0
 	li $a2, 51	# y-offset 0
 	jal key_printer
@@ -893,7 +905,7 @@ draw_kansas:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, kansas	# set image path
+	la $a0, map_kansas	# set image path
 	li $a1, 128	# x-offset 0
 	li $a2, 58	# y-offset 0
 	jal key_printer
@@ -914,7 +926,7 @@ draw_missouri:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, missouri	# set image path
+	la $a0, map_missouri	# set image path
 	li $a1, 151	# x-offset 0
 	li $a2, 56	# y-offset 0
 	jal key_printer
@@ -935,7 +947,7 @@ draw_kentucky:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, kentucky	# set image path
+	la $a0, map_kentucky	# set image path
 	li $a1, 175	# x-offset 0
 	li $a2, 60	# y-offset 0
 	jal key_printer
@@ -956,7 +968,7 @@ draw_westvirginia:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, westvirginia	# set image path
+	la $a0, map_westvirginia	# set image path
 	li $a1, 198	# x-offset 0
 	li $a2, 54	# y-offset 0
 	jal key_printer
@@ -977,7 +989,7 @@ draw_virginia:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, virginia	# set image path
+	la $a0, map_virginia	# set image path
 	li $a1, 198	# x-offset 0
 	li $a2, 56	# y-offset 0
 	jal key_printer
@@ -998,7 +1010,7 @@ draw_arizona:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, arizona	# set image path
+	la $a0, map_arizona	# set image path
 	li $a1, 78	# x-offset 0
 	li $a2, 67	# y-offset 0
 	jal key_printer
@@ -1019,7 +1031,7 @@ draw_newmexico:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, newmexico	# set image path
+	la $a0, map_newmexico	# set image path
 	li $a1, 99	# x-offset 0
 	li $a2, 70	# y-offset 0
 	jal key_printer
@@ -1040,7 +1052,7 @@ draw_texas:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, texas	# set image path
+	la $a0, map_texas	# set image path
 	li $a1, 109	# x-offset 0
 	li $a2, 74	# y-offset 0
 	jal key_printer
@@ -1061,7 +1073,7 @@ draw_oklahoma:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, oklahoma	# set image path
+	la $a0, map_oklahoma	# set image path
 	li $a1, 124	# x-offset 0
 	li $a2, 72	# y-offset 0
 	jal key_printer
@@ -1082,7 +1094,7 @@ draw_arkansas:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, arkansas	# set image path
+	la $a0, map_arkansas	# set image path
 	li $a1, 155	# x-offset 0
 	li $a2, 74	# y-offset 0
 	jal key_printer
@@ -1103,7 +1115,7 @@ draw_louisiana:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, louisiana	# set image path
+	la $a0, map_louisiana	# set image path
 	li $a1, 157	# x-offset 0
 	li $a2, 91	# y-offset 0
 	jal key_printer
@@ -1124,7 +1136,7 @@ draw_tennessee:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, tennessee	# set image path
+	la $a0, map_tennessee	# set image path
 	li $a1, 172	# x-offset 0
 	li $a2, 71	# y-offset 0
 	jal key_printer
@@ -1145,7 +1157,7 @@ draw_mississippi:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, mississippi	# set image path
+	la $a0, map_mississippi	# set image path
 	li $a1, 168	# x-offset 0
 	li $a2, 81	# y-offset 0
 	jal key_printer
@@ -1166,7 +1178,7 @@ draw_alabama:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, alabama	# set image path
+	la $a0, map_alabama	# set image path
 	li $a1, 179	# x-offset 0
 	li $a2, 80	# y-offset 0
 	jal key_printer
@@ -1187,7 +1199,7 @@ draw_georgia:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, georgia	# set image path
+	la $a0, map_georgia	# set image path
 	li $a1, 189	# x-offset 0
 	li $a2, 79	# y-offset 0
 	jal key_printer
@@ -1208,7 +1220,7 @@ draw_northcarolina:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, northcarolina	# set image path
+	la $a0, map_northcarolina	# set image path
 	li $a1, 193	# x-offset 0
 	li $a2, 67	# y-offset 0
 	jal key_printer
@@ -1229,7 +1241,7 @@ draw_southcarolina:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, southcarolina	# set image path
+	la $a0, map_southcarolina	# set image path
 	li $a1, 198	# x-offset 0
 	li $a2, 77	# y-offset 0
 	jal key_printer
@@ -1250,7 +1262,7 @@ draw_florida:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, florida	# set image path
+	la $a0, map_florida	# set image path
 	li $a1, 184	# x-offset 0
 	li $a2, 98	# y-offset 0
 	jal key_printer
@@ -1271,7 +1283,7 @@ draw_hawaii:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, hawaii	# set image path
+	la $a0, map_hawaii	# set image path
 	li $a1, 26	# x-offset 0
 	li $a2, 58	# y-offset 0
 	jal key_printer
@@ -1292,7 +1304,7 @@ draw_alaska:
 
 	move $a3, $a0		# move specified color to argument for key_printer
 
-	la $a0, alaska	# set image path
+	la $a0, map_alaska	# set image path
 	li $a1, 18	# x-offset 0
 	li $a2, 87	# y-offset 0
 	jal key_printer
@@ -1308,7 +1320,7 @@ draw_darksouls:
 	sw $fp, 4($sp)		# backup frame pointer
 	move $fp, $sp		# move frame pointer to point at current top of stack
 
-	la $a0, darksouls	# set image path
+	la $a0, map_darksouls	# set image path
 	li $a1, 0	# x-offset
 	li $a2, 48	# y-offset
 	jal printer
