@@ -9,7 +9,7 @@
 	move $fp, $sp		# initialize frame pointer at start of stack
 
 	la $a0, Alabama
-	li $a1, 0
+	li $a1, 1
 	jal readTemp
 
 	move $t0, $v0		# move result to $t0
@@ -55,6 +55,13 @@ readTemp_loop:
 	addi $s2, $s2, 1	# else, increment counter by 1
 	j readTemp_loop		# else loop
 readTemp_loopEnd:
+	move $t0, $v0		# stash result in $t0
+	li $v0, 16		# close file
+	move $a0, $s1		# load file descriptor
+	syscall
+
+	move $v0, $t0		# move result back to $v0
+
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore original frame pointer
 	addi $sp, $sp, 8	# pop everything off stack
