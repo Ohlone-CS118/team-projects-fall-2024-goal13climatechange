@@ -1,66 +1,72 @@
 .data
 
-Alabama:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Alabama.txt"
-Alaska:			.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Alaska.txt"
-Arizona:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Arizona.txt"
-Arkansas:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Arkansas.txt"
-California:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/California.txt"
-Colorado:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Colorodo.txt"
-Connecticut:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Connecticut.txt"
-Delaware:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Delaware.txt"
-Florida:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Florida.txt"
-Georgia:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Georgia.txt"
-Idaho:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Idaho.txt"
-Illanois:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Illanois.txt"
-Indiana:	.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Indiana.txt"
-Iowa:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Iowa.txt"
-Kansas:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Kansas.txt"
-Kentucky:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Kentucky.txt"
-Louisianna:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Louisianna.txt"
-Maine:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Maine.txt"
-Maryland:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Maryland.txt"
-Massachusetts:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Massachussets.txt"
-Michigan:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Michigan.txt"
-Minnesota:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Minnesota.txt"
-Mississippi:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Mississippi.txt"
-Missouri:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Missouri.txt"
-Montana:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Montana.txt"
-Nebraska:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Nebraska.txt"
-Nevada:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Nevada.txt"
-NewHampshire:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/New Hampshire.txt"
-NewJersey:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/New Jersey.txt"
-NewMexico:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/New Mexico.txt"
-NewYork:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/New York.txt"
-NorthCarolina:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/North Carolina.txt"
-NorthDakota:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/North Dakota.txt"
-Ohio:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Ohio.txt"
-Oklahoma:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Oklahoma.txt"
-Oregon:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Oregon.txt"
-#comparison not done yet
-Pennsylvania:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Pennsylvania.txt"
-RhodeIsland:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Rhode Island.txt"
-SouthCarolina:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/South Carolina.txt"
-SouthDakota:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/South Dakota.txt"
-Tennessee:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Tennessee.txt"
-Texas:		.asciiz	"C:/Users/thega/Downloads/School/CS118/Project/States/Texas.txt"
+Alabama:		.asciiz	"States/Alabama.txt"
+Alaska:			.asciiz	"States/Alaska.txt"
+Arizona:		.asciiz	"States/Arizona.txt"
+Arkansas:		.asciiz	"States/Arkansas.txt"
+California:		.asciiz	"States/California.txt"
+Colorado:		.asciiz	"States/Colorodo.txt"
+Connecticut:		.asciiz	"States/Connecticut.txt"
+Delaware:		.asciiz	"States/Delaware.txt"
+Florida:		.asciiz	"States/Florida.txt"
+Georgia:		.asciiz	"States/Georgia.txt"
+Idaho:			.asciiz	"States/Idaho.txt"
+Illanois:		.asciiz	"States/Illanois.txt"
+Indiana:		.asciiz	"States/Indiana.txt"
+Iowa:			.asciiz	"States/Iowa.txt"
+Kansas:			.asciiz	"States/Kansas.txt"
+Kentucky:		.asciiz	"States/Kentucky.txt"
+Louisianna:		.asciiz	"States/Louisianna.txt"
+Maine:			.asciiz	"States/Maine.txt"
+Maryland:		.asciiz	"States/Maryland.txt"
+Massachusetts:		.asciiz	"States/Massachussets.txt"
+Michigan:		.asciiz	"States/Michigan.txt"
+Minnesota:		.asciiz	"States/Minnesota.txt"
+Mississippi:		.asciiz	"States/Mississippi.txt"
+Missouri:		.asciiz	"States/Missouri.txt"
+Montana:		.asciiz	"States/Montana.txt"
+Nebraska:		.asciiz	"States/Nebraska.txt"
+Nevada:			.asciiz	"States/Nevada.txt"
+NewHampshire:		.asciiz	"States/New Hampshire.txt"
+NewJersey:		.asciiz	"States/New Jersey.txt"
+NewMexico:		.asciiz	"States/New Mexico.txt"
+NewYork:		.asciiz	"States/New York.txt"
+NorthCarolina:		.asciiz	"States/North Carolina.txt"
+NorthDakota:		.asciiz	"States/North Dakota.txt"
+Ohio:			.asciiz	"States/Ohio.txt"
+Oklahoma:		.asciiz	"States/Oklahoma.txt"
+Oregon:			.asciiz	"States/Oregon.txt"
+Pennsylvania:		.asciiz	"States/Pennsylvania.txt"
+RhodeIsland:		.asciiz	"States/Rhode Island.txt"
+SouthCarolina:		.asciiz	"States/South Carolina.txt"
+SouthDakota:		.asciiz	"States/South Dakota.txt"
+Tennessee:		.asciiz	"States/Tennessee.txt"
+Texas:			.asciiz	"States/Texas.txt"
+Utah:			.asciiz	"States/Utah.txt"
+Vermont:		.asciiz	"States/Vermont.txt"
+Virginia:		.asciiz	"States/Virginia.txt"
+Washington:		.asciiz	"States/Washington.txt"
+WestVirginia:		.asciiz	"States/West Virgninia.txt"
+Wisconsin:		.asciiz	"States/Wisconsin.txt"
+Wyoming:		.asciiz	"States/Wyoming.txt"
 
-buffer:	 		.space 200
-stateNameAlabama:	.asciiz	"Alabama"
-stateNameAlaska:	.asciiz	"Alaska"
-stateNameArizona:	.asciiz	"Arizona"
-stateNameArkansas:	.asciiz	"Arkansas"
-stateNameCalifornia:	.asciiz	"California"
-stateNameColorado:	.asciiz	"Colorado"
-stateNameConnecticut:	.asciiz	"Connecticut"
-stateNameDelaware:	.asciiz	"Delaware"
-stateNameFlorida:	.asciiz	"Florida"
-stateNameGeorgia:	.asciiz	"Georgia"
-stateNameIdaho:		.asciiz	"Idaho\n"
-stateNameIllanois:	.asciiz	"Illanois"
-stateNameIndiana:	.asciiz	"Indiana"
-stateNameIowa:		.asciiz	"Iowa\n"
-stateNameKansas:	.asciiz	"Kansas"
-stateNameKentucky:	.asciiz	"Kentucky"
+buffer:	 			.space 200
+stateNameAlabama:		.asciiz	"Alabama"
+stateNameAlaska:		.asciiz	"Alaska"
+stateNameArizona:		.asciiz	"Arizona"
+stateNameArkansas:		.asciiz	"Arkansas"
+stateNameCalifornia:		.asciiz	"California"
+stateNameColorado:		.asciiz	"Colorado"
+stateNameConnecticut:		.asciiz	"Connecticut"
+stateNameDelaware:		.asciiz	"Delaware"
+stateNameFlorida:		.asciiz	"Florida"
+stateNameGeorgia:		.asciiz	"Georgia"
+stateNameIdaho:			.asciiz	"Idaho\n"
+stateNameIllanois:		.asciiz	"Illanois"
+stateNameIndiana:		.asciiz	"Indiana"
+stateNameIowa:			.asciiz	"Iowa\n"
+stateNameKansas:		.asciiz	"Kansas"
+stateNameKentucky:		.asciiz	"Kentucky"
 stateNameLouisianna:		.asciiz	"Louisianna"
 stateNameMaine:			.asciiz	"Maine"
 stateNameMaryland:		.asciiz	"Maryland"
@@ -78,7 +84,7 @@ stateNameNewMexico:		.asciiz	"New Mexico"
 stateNameNewYork:		.asciiz	"New York"
 stateNameNCarolina:		.asciiz	"North Carolina"
 stateNameNDakota:		.asciiz	"North Dakota"
-stateNameOhio:		.asciiz	"Ohio"
+stateNameOhio:			.asciiz	"Ohio"
 stateNameOklahoma:		.asciiz	"Oklahoma"
 stateNameOregon:		.asciiz	"Oregon"
 stateNamePennsylvania:		.asciiz	"Pennsylvania"
@@ -86,18 +92,24 @@ stateNameRhodeIsland:		.asciiz	"Rhode Island"
 stateNameSCarolina:		.asciiz	"South Carolina"
 stateNameSDakota:		.asciiz	"South Dakota"
 stateNameTennessee:		.asciiz	"Tennessee"
-stateNameTexas:		.asciiz	"Texas"
+stateNameTexas:			.asciiz	"Texas"
+stateNameUtah:			.asciiz	"Utah"
+stateNameVermont:		.asciiz	"Vermont"
+stateNameVirginia:		.asciiz	"Virginia"
+stateNameWashington:		.asciiz	"Washington"
+stateNameWVirginia:		.asciiz	"West Virginia"
+stateNameWisconsin:		.asciiz	"Wisconsin"
+stateNameWyoming:		.asciiz	"Wyoming"
 
-
-
-state:		.space 15
-stateprompt:	.asciiz "Enter a state(such as North Dakota, Alaska, New Hampshire): "
-year:		.space 8
-yearprompt:	.asciiz	"Enter a Decade from the following(1990, 2000, 2010, 2020): "
-newline:	.asciiz	"\n"
+state:			.space 15
+stateprompt:		.asciiz "Enter a state(such as North Dakota, Alaska, New Hampshire): "
+year:			.space 8
+yearprompt:		.asciiz	"Enter a Decade from the following(1990, 2000, 2010, 2020): "
+newline:		.asciiz	"\n"
 
 testbuffer:		.space	4
 invalidyear:		.asciiz	"The year entered is invalid please try again with 1990, 2000, 2010, or 2020."
+invalidstate:		.asciiz	"The state entered is invalid please make sure you capitalised the beginning of each word and included spaces."
 
 .text
 main:	
@@ -124,21 +136,8 @@ main:
 	
 	jal exactTemp
 	
-#	la $a0, testbuffer
-#	mtc1 $a0, $f30
-#	cvt.d.w $f30, $f30
-#	li $t7, 10
-#	mtc1 $t7, $f28
-#	cvt.d.w $f28, $f28
-#	div.d $f12, $f30, $f28
-#	li $v0, 3
-#	syscall
-	
-	#li $v0, 11
 	li $v0, 4
-	#la $a0, buffer
 	la $a0, testbuffer
-	#addi $a0, $a0, 5
 	syscall
 
 
@@ -1113,12 +1112,235 @@ compareloopSDakota:
 			addi $t4, $t4, 1	#i++
 			j compareloopSDakota	#loop
 endloopSDakota:
-	j end
+	j compareTennessee
 
 stringsEqualSDakota:
 	la $a0, SouthDakota			#load the path for South Dakota.txt
 	jr $ra
 	
+	
+compareTennessee:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameTennessee	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 7
+
+compareloopTennessee:
+	beq $t4,$t5,stringsEqualTennessee
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopTennessee
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopTennessee	#loop
+endloopTennessee:
+	j compareTexas
+
+stringsEqualTennessee:
+	la $a0, Tennessee			#load the path for Tennessee.txt
+	jr $ra
+	
+compareTexas:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameTexas	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 5
+
+compareloopTexas:
+	beq $t4,$t5,stringsEqualTexas
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopTexas
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopTexas	#loop
+endloopTexas:
+	j compareUtah
+
+stringsEqualTexas:
+	la $a0, Texas			#load the path for Texas.txt
+	jr $ra
+	
+compareUtah:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameUtah	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 4
+
+compareloopUtah:
+	beq $t4,$t5,stringsEqualUtah
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopUtah
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopUtah	#loop
+endloopUtah:
+	j compareVermont
+
+stringsEqualUtah:
+	la $a0, Utah			#load the path for Utah.txt
+	jr $ra
+	
+compareVermont:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameVermont	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 6
+
+compareloopVermont:
+	beq $t4,$t5,stringsEqualVermont
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopVermont
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopVermont	#loop
+endloopVermont:
+	j compareVirginia
+
+stringsEqualVermont:
+	la $a0, Vermont			#load the path for Vermont.txt
+	jr $ra
+	
+compareVirginia:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameVirginia	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 7
+
+compareloopVirginia:
+	beq $t4,$t5,stringsEqualVirginia
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopVirginia
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopVirginia	#loop
+endloopVirginia:
+	j compareWashington
+
+stringsEqualVirginia:
+	la $a0, Virginia			#load the path for Texas.txt
+	jr $ra
+
+compareWashington:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameWashington	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 7
+
+compareloopWashington:
+	beq $t4,$t5,stringsEqualWashington
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopWashington
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopWashington	#loop
+endloopWashington:
+	j compareWVirginia
+
+stringsEqualWashington:
+	la $a0, Washington			#load the path for Washington.txt
+	jr $ra
+	
+compareWVirginia:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameWVirginia	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 10
+
+compareloopWVirginia:
+	beq $t4,$t5,stringsEqualWVirginia
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopWVirginia
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopWVirginia	#loop
+endloopWVirginia:
+	j compareWisconsin
+
+stringsEqualWVirginia:
+	la $a0, WestVirginia			#load the path for West Virginia.txt
+	jr $ra
+
+compareWisconsin:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameWisconsin	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 8
+
+compareloopWisconsin:
+	beq $t4,$t5,stringsEqualWisconsin
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopWisconsin
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopWisconsin	#loop
+endloopWisconsin:
+	j compareWyoming
+
+stringsEqualWisconsin:
+	la $a0, Wisconsin			#load the path for Wisconsin.txt
+	jr $ra
+	
+compareWyoming:
+	lw $t0, -4($fp)			#string entered by user
+	la $a1, stateNameWyoming	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 6
+
+compareloopWyoming:
+	beq $t4,$t5,stringsEqualWyoming
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+#if characters don't match then exit loop
+		bne $t2, $t3, endloopWyoming
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopWyoming	#loop
+endloopWyoming:
+	j invalidState
+
+stringsEqualWyoming:
+	la $a0, Wyoming			#load the path for Wyoming.txt
+	jr $ra
+	
+invalidState:
+	li $v0, 4
+	la $a0, invalidstate
+	syscall
+	j end
+
 #
 #postcondition:	$a0 will contain the temperature for the requested decade
 exactTemp:	
