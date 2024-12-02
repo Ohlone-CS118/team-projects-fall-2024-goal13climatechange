@@ -113,36 +113,33 @@ invalidstate:		.asciiz	"The state entered is invalid please make sure you capita
 
 .text
 main:	
-	move $fp, $sp
-	addi $sp, $sp, -12
+	move $fp, $sp			#initialize the stack
+	addi $sp, $sp, -12		#make room for three words
 	
-	jal getYear
+	jal getYear			#call the function to get user input for decade
 	
-	jal getState
+	jal getState			#call the function to get user input for state
 	
-	li $v0, 4
+	li $v0, 4			#print the newline
 	la $a0, newline
 	syscall
 	
-	#li $v0, 4
-	lw $a0, -4($fp)
-	#syscall
+	lw $a0, -4($fp)			#load the user input for the state into $a0
 	
-	jal compare
-	la $a1, buffer
-	jal readFile
+	jal compare			#call the fucntion to compare user input to the state names
+	la $a1, buffer			#load the state file address
+	jal readFile			#call readFile
 	
-	sw $a0, -12($fp)
+	sw $a0, -12($fp)		#store the data from the file
 	
-	jal exactTemp
+	jal exactTemp			#call exactTemp function to load the exact line into a seperate buffer to print out
 	
-	li $v0, 4
+	li $v0, 4			#print the exact temperature requested
 	la $a0, testbuffer
 	syscall
 
-
 end:
-	li $v0, 10
+	li $v0, 10			#exit safely
 	syscall
 
 getState:
@@ -155,24 +152,25 @@ getState:
 	li $a1, 20			#max input length
 	syscall
 
-	sw $a0, -4($fp)	
+	sw $a0, -4($fp)			#store on the stack
 	jr $ra
 	
 getYear:
-	la $a0, yearprompt
+	la $a0, yearprompt		#print the year prompt
 	li $v0, 4
 	syscall
 	
-	la $a0, year
-	li $v0, 5
+	la $a0, year			#load the address for the year
+	li $v0, 5			#read the inpputted integer
 	syscall
 	
-	sw $v0, -8($fp)
-	jr $ra
+	sw $v0, -8($fp)			#store on the stack
+	move $t7, $v0			#move into a register for grafik.asm(?)
+	jr $ra				#return
 
 #precondition:	$a0 contains the user inputted string for the state
 #		$a1 contains the string of a statename it will be compared to
-#postcondition
+#postcondition	$a0 will contain the path for the user inputted state
 compare:
 	
 compareAlabama:
@@ -1336,39 +1334,39 @@ stringsEqualWyoming:
 	jr $ra
 	
 invalidState:
-	li $v0, 4
+	li $v0, 4			#print the string telling the user it is an invalid input
 	la $a0, invalidstate
 	syscall
-	j end
+	j end				#jump to the end
 
-#
-#postcondition:	$a0 will contain the temperature for the requested decade
+#precondition:	the decade entered is stored in memory and is of the following, 1990, 2000, 2010, 2020
+#postcondition:	the label testbuffer will contain the temperature at the specified decade
 exactTemp:	
     
 compare1990:
-	lw $t2, -8($fp)
-	li $t3, 1990
-	beq $t2,$t3,stringsEqual1990
-	bne $t2, $t3, not1990
+	lw $t2, -8($fp)			#load the user inputted integer for the decade
+	li $t3, 1990			#load the decade to compare to
+	beq $t2,$t3,stringsEqual1990	#if they are equal then branch to stringsEqual1990
+	bne $t2, $t3, not1990		#if not then branch to not1990
 
 not1990:
-	j compare2000
+	j compare2000			#jump to next comparison
 
 stringsEqual1990:	
-	la $a0, buffer
-	lb $a0, 15($a0)
-	move $t0, $a0
-	sb $t0, testbuffer
-	la $a0, buffer
-	lb $a0, 16($a0)
-	move $t0, $a0
-	sb $t0, testbuffer+1
-	la $a0, buffer
-	lb $a0, 17($a0)
-	move $t0, $a0
-	sb $t0, testbuffer+2	
+	la $a0, buffer			#load the state file
+	lb $a0, 15($a0)			#load the first byte of the last line
+	move $t0, $a0			#move to $t0
+	sb $t0, testbuffer		#store in the new label
+	la $a0, buffer			#load the state file
+	lb $a0, 16($a0)			#load the next byte
+	move $t0, $a0			#move into $t0
+	sb $t0, testbuffer+1		#store into new label at the next byte
+	la $a0, buffer			#load the state file
+	lb $a0, 17($a0)			#load the next byte
+	move $t0, $a0			#move into $t0
+	sb $t0, testbuffer+2		#store into the new label at the next byte
 	
-	jr $ra
+	jr $ra				#return
 
 compare2000:
 	lw $t2, -8($fp)
