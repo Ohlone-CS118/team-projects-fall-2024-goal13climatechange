@@ -6,6 +6,8 @@
 	temperature_buffer: .space 4	# allocate space for faciltating reading in temperatures
 
 .text
+.globl readTemp
+main:
 	move $fp, $sp		# initialize frame pointer at start of stack
 
 	la $a0, Alabama
@@ -26,11 +28,14 @@
 #	$a0: path to state file
 #	$a1: which line to read from (starts at 0, which should be temp at current decade)
 # postcondition:
-#	$v0 contains temperature at requested location, -1 if temperature does not exist at requested line	
+#	$v0 contains temperature at requested location, 0 if temperature does not exist at requested line	
 readTemp:
-	subi $sp, $sp, 8	# allocate 8 bytes in stack
+	subi $sp, $sp, 20	# allocate 20 bytes in stack
 	sw $ra, 0($sp)		# backup return address
 	sw $fp, 4($sp)		# backup original frame pointer
+	sw $s0, 8($sp)		# backup saved registers
+	sw $s1, 12($sp)
+	sw $s2, 16($sp)
 	move $fp, $sp		# move frame pointer to point at current top of stack
 
 	# USED REGISTERS
@@ -64,7 +69,10 @@ readTemp_loopEnd:
 
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore original frame pointer
-	addi $sp, $sp, 8	# pop everything off stack
+	lw $s0, 8($fp)		# restore saved registers
+	lw $s1, 12($fp)
+	lw $s2, 16($fp)
+	addi $sp, $sp, 20	# pop everything off stack
 	jr $ra			# return
 
 # i am reusing the reading engine i wrote for the printer lmao
@@ -94,7 +102,7 @@ readTemp_readLoop:
 	j readTemp_readLoop		# loop	
 	
 readTemp_readEOF:
-	li $t0, -1		# return -1 if at end of file
+	#li $t0, -1		# return -1 if at end of file
 readTemp_endRead:
 	move $v0, $t0		# move result into $v0
 	jr $ra			# return to main printer function
