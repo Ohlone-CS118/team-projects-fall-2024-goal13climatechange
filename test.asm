@@ -1,5 +1,4 @@
 .data
-
 Alabama:		.asciiz	"States/Alabama.txt"
 Alaska:			.asciiz	"States/Alaska.txt"
 Arizona:		.asciiz	"States/Arizona.txt"
@@ -46,7 +45,7 @@ Utah:			.asciiz	"States/Utah.txt"
 Vermont:		.asciiz	"States/Vermont.txt"
 Virginia:		.asciiz	"States/Virginia.txt"
 Washington:		.asciiz	"States/Washington.txt"
-WestVirginia:		.asciiz	"States/West Virgninia.txt"
+WestVirginia:		.asciiz	"States/West Virginia.txt"
 Wisconsin:		.asciiz	"States/Wisconsin.txt"
 Wyoming:		.asciiz	"States/Wyoming.txt"
 
@@ -100,12 +99,17 @@ stateNameWashington:		.asciiz	"Washington"
 stateNameWVirginia:		.asciiz	"West Virginia"
 stateNameWisconsin:		.asciiz	"Wisconsin"
 stateNameWyoming:		.asciiz	"Wyoming"
+endProgramYes:			.asciiz	"yes"
+endProgramNo:			.asciiz	"no\n"
 
-state:			.space 15
+state:			.space 20
 stateprompt:		.asciiz "Enter a state(such as North Dakota, Alaska, New Hampshire): "
 year:			.space 4
 yearprompt:		.asciiz	"Enter a Decade from the following(1990, 2000, 2010, 2020): "
 newline:		.asciiz	"\n"
+endProgramInput:	.space 4
+endProgramString:	.asciiz	"\nWould you like to continue using the program? Please enter yes/no: "
+invalidEnd:		.asciiz	"\nIt can't be that hard to type yes or no"
 
 testbuffer:		.space	4
 invalidyear:		.asciiz	"The year entered is invalid please try again with 1990, 2000, 2010, or 2020."
@@ -133,6 +137,10 @@ main:
 	li $v0, 4			#print the exact temperature requested
 	la $a0, testbuffer
 	syscall
+	
+	jal endFunction			#call endFunction to get user input for whether they want to continue using the program
+	jal endCompare			#call endCompare function to compare the user input to strings "no" and "yes"
+	j main				#loop the program
 
 end:
 	li $v0, 10			#exit safely
@@ -184,6 +192,99 @@ getYear:
 	addi $sp, $sp, 	8	# deallocate space in stack
 	
 	jr $ra			#return
+	
+#postcondition:	the user input will be stored in $s7
+endFunction:
+	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
+	sw $ra, 0($sp)		# backup return address
+	sw $fp, 4($sp)		# backup frame pointer
+	move $fp, $sp		# move frame pointer to point at current top of stack
+	
+	li $v0, 4		#print the prompt to end or continue the program
+	la $a0, endProgramString
+	syscall
+	
+	li $v0, 8		#read the input
+	la $a0, endProgramInput
+	li $a1, 4		#max length of input
+	syscall
+	
+	move $s7, $a0		#move the input into $s7 for comparison later
+	
+	li $v0, 4		#newline to make the text neater
+	la $a0, newline
+	syscall
+	
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 	8	# deallocate space in stack
+	jr $ra
+	
+#precondition:	$s7 contains a user inputted string
+#postcondition:	the program will end if the inputted string is "no" or anything other than "yes"
+endCompare:
+	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
+	sw $ra, 0($sp)		# backup return address
+	sw $fp, 4($sp)		# backup frame pointer
+	move $fp, $sp		# move frame pointer to point at current top of stack		
+
+yesCompare:			
+	move $t0, $s7			#move the user input into $t0 for string comparison
+	la $a1, endProgramYes		#string to compare to
+	move $t1, $a1
+	li $t4, 0			#initialize counter
+	li $t5, 3			#initialize counter limit
+    
+compareloopYes:
+	beq $t4,$t5,stringsEqualYes
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+		bne $t2, $t3, endloopYes
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopYes	#loop
+
+endloopYes:
+	j compareNo		#jump to compare input to "no"
+    
+stringsEqualYes:
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 	8	# deallocate space in stack
+	jr $ra			#return as the user inputted yes
+	
+compareNo:
+	la $a1, endProgramNo		#string to compare to
+	move $t1, $a1
+	li $t4, 0			#initialize counter
+	li $t5, 2			#initialize counter limit
+    
+compareloopNo:
+	beq $t4,$t5,stringsEqualNo
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+		bne $t2, $t3, endloopNo
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopNo		#loop
+
+endloopNo:
+	li $v0, 4		#print string telling the user they did not enter no or yes
+	la $a0, invalidEnd
+	syscall
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 	8	# deallocate space in stack
+	j end			#jump to the end to kill the program			
+
+stringsEqualNo:
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 	8	# deallocate space in stack
+	j end			#jump to the end as the user entered no
+	
 
 #	The compare function takes the user inputted string and compares it with each of the 49 available states
 #	until it matches the user input with a state name by comparing character by character until the counter
@@ -213,7 +314,6 @@ compareloopAlabama:
 	beq $t4,$t5,stringsEqualAlabama
 		lb $t2, 0($t0)	#load byte(character) for the user input string
 		lb $t3, 0($t1)	#load byte(character) for the base string
-		#if characters don't match then exit loop
 		bne $t2, $t3, endloopAlabama
 			addi $t0, $t0, 1	#move to next letter in user input
 			addi $t1, $t1, 1	#move to next letter in base string
@@ -221,7 +321,7 @@ compareloopAlabama:
 			j compareloopAlabama	#loop
 
 endloopAlabama:
-	j compareAlaska
+	j compareAlaska		#jump to next comparison
     
 stringsEqualAlabama:
 	la $a0, Alabama		#load the path of Alabama
@@ -241,7 +341,6 @@ compareloopAlaska:
 	beq $t4,$t5,stringsEqualAlaska
 		lb $t2, 0($t0)	#load byte(character) for the user input string
 		lb $t3, 0($t1)	#load byte(character) for the base string
-#if characters don't match then exit loop
 		bne $t2, $t3, endloopAlaska
 			addi $t0, $t0, 1	#move to next letter in user input
 			addi $t1, $t1, 1	#move to next letter in base string
@@ -269,7 +368,6 @@ compareloopArizona:
 	beq $t4,$t5,stringsEqualArizona
 		lb $t2, 0($t0)	#load byte(character) for the user input string
 		lb $t3, 0($t1)	#load byte(character) for the base string
-#if characters don't match then exit loop
 		bne $t2, $t3, endloopArizona
 			addi $t0, $t0, 1	#move to next letter in user input
 			addi $t1, $t1, 1	#move to next letter in base string
