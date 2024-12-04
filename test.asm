@@ -10,12 +10,12 @@ Delaware:		.asciiz	"States/Delaware.txt"
 Florida:		.asciiz	"States/Florida.txt"
 Georgia:		.asciiz	"States/Georgia.txt"
 Idaho:			.asciiz	"States/Idaho.txt"
-Illanois:		.asciiz	"States/Illanois.txt"
+Illinois:		.asciiz	"States/Illinois.txt"
 Indiana:		.asciiz	"States/Indiana.txt"
 Iowa:			.asciiz	"States/Iowa.txt"
 Kansas:			.asciiz	"States/Kansas.txt"
 Kentucky:		.asciiz	"States/Kentucky.txt"
-Louisianna:		.asciiz	"States/Louisianna.txt"
+Louisiana:		.asciiz	"States/Louisiana.txt"
 Maine:			.asciiz	"States/Maine.txt"
 Maryland:		.asciiz	"States/Maryland.txt"
 Massachusetts:		.asciiz	"States/Massachussets.txt"
@@ -61,12 +61,12 @@ stateNameDelaware:		.asciiz	"Delaware"
 stateNameFlorida:		.asciiz	"Florida"
 stateNameGeorgia:		.asciiz	"Georgia"
 stateNameIdaho:			.asciiz	"Idaho\n"
-stateNameIllanois:		.asciiz	"Illanois"
+stateNameIllinois:		.asciiz	"Illinois"
 stateNameIndiana:		.asciiz	"Indiana"
 stateNameIowa:			.asciiz	"Iowa\n"
 stateNameKansas:		.asciiz	"Kansas"
 stateNameKentucky:		.asciiz	"Kentucky"
-stateNameLouisianna:		.asciiz	"Louisianna"
+stateNameLouisiana:		.asciiz	"Louisiana"
 stateNameMaine:			.asciiz	"Maine"
 stateNameMaryland:		.asciiz	"Maryland"
 stateNameMassachusetts:	.asciiz	"Massachusetts"
@@ -112,10 +112,11 @@ endProgramString:	.asciiz	"\nWould you like to continue using the program? Pleas
 invalidEnd:		.asciiz	"\nIt can't be that hard to type yes or no"
 
 testbuffer:		.space	400
+tempcurrent:		.space	400
 invalidyear:		.asciiz	"The year entered is invalid please try again with 1990, 2000, 2010, or 2020."
 invalidstate:		.asciiz	"The state entered is invalid please make sure you capitalised the beginning of each word and included spaces."
-stateAverage:		.asciiz	"The average temperature at the requested decade is: "
-stateDifference:	.asciiz	"The difference in average temperature from the requested decade with the 2020s is: "
+stateAverage:		.asciiz	"\nThe average temperature at the requested decade is: "
+stateDifference:	.asciiz	"\nThe difference in average temperature from the requested decade with the 2020s is: "
 .text
 main:	
 	move $fp, $sp			#initialize the stack
@@ -134,18 +135,74 @@ main:
 	
 	move $t2, $s6			#move the user inputted year for exactTemp
 	jal exactTemp			#call exactTemp function to load the exact line into a seperate buffer to print out
+
+#ASCII to integer conversion so math can be done with the loaded line of the State.txt file
+	la $t0, testbuffer		#load address of the string
+	li $t3, 0			#initialize result to 0
+	li $t4, 10			#multiplier for decimal place
+convertLoop:
+	lb $t1, 0($t0)			#load the current character
+	beq $t1, $zero, loopEnd	#if null terminator, end loop
+		sub $t2, $t1, 48	#convert ASCII character to digit (char - '0')
+		mul $t3, $t3, $t4	#multiply current result by 10
+		add $t3, $t3, $t2	#add the current digit to the result
+		addi $t0, $t0, 1	#move to the next character
+		j convertLoop		#repeat for the next character
+loopEnd:
+	mtc1 $t3, $f28			#move the converted integer into the FPU
+	cvt.d.w $f12, $f28		#conver into a double
+	li $t0, 10			#load 10 into $t0
+	mtc1 $t0, $f30			#move into the FPU
+	cvt.d.w $f30, $f30		#convert into a double
+	div.d $f12, $f12, $f30		#divide the converted double by 10 to get the accurate temp
 	
-	li $v0, 4			#print the exact temperature requested
-	la $a0, testbuffer
+	li $v0, 4			#print string for telling the user what the number is
+	la $a0, stateAverage
+	syscall
+	
+	li $v0, 3			#print the average temp at the requested decade
+	syscall
+	
+	mov.d $f2, $f12			#move into $f2 so it doesn't get overwritten
+	
+#same ASCII to number conversion for the current decade	
+	la $t0, tempcurrent		#load address of the string
+	li $t3, 0			#initialize result to 0
+	li $t4, 10			#multiplier for decimal place
+	
+convertLoopCurrent:
+	lb $t1, 0($t0)				#load the current character
+	beq $t1, $zero, loopEndCurrent		#if null terminator, end loop
+		sub $t2, $t1, 48		#convert ASCII character to digit (char - '0')
+		mul $t3, $t3, $t4		#multiply current result by 10
+		add $t3, $t3, $t2		#add the current digit to the result
+		addi $t0, $t0, 1		#move to the next character
+		j convertLoopCurrent		#repeat for the next character
+loopEndCurrent:
+
+	mtc1 $t3, $f28		#same as before but for the 2020 temp of the chosen state
+	cvt.d.w $f12, $f28
+	li $t0, 10
+	mtc1 $t0, $f30
+	cvt.d.w $f30, $f30
+	div.d $f12, $f12, $f30	
+	
+	sub.d $f12, $f12, $f2	#subtract the chosen temp from the 2020 temp
+	
+	li $v0, 4		#print string telling the user what the number means
+	la $a0, stateDifference
+	syscall
+	
+	li $v0, 3		#print the difference
 	syscall
 	
 	li $v0, 16		#close file
 	move $a0, $s2		#set the file handler
-	syscall
+	syscall			#execute
 	
-	jal endFunction			#call endFunction to get user input for whether they want to continue using the program
-	jal endCompare			#call endCompare function to compare the user input to strings "no" and "yes"
-	j main				#loop the program
+	jal endFunction		#call endFunction to get user input for whether they want to continue using the program
+	jal endCompare		#call endCompare function to compare the user input to strings "no" and "yes"
+	j main			#loop the program
 
 end:
 	li $v0, 10			#exit safely
@@ -588,7 +645,7 @@ compareloopIdaho:
 			addi $t4, $t4, 1	#i++
 			j compareloopIdaho	#loop
 endloopIdaho:
-	j compareIllanois	#jump to next comparison
+	j compareIllinois	#jump to next comparison
 
 stringsEqualIdaho:
 	la $a0, Idaho		#load the path for Idaho.txt
@@ -597,27 +654,27 @@ stringsEqualIdaho:
 	addi $sp, $sp, 	8	# deallocate space in stack
 	jr $ra			#return
 	
-compareIllanois:
+compareIllinois:
 	move $t0, $s7			#string entered by user
-	la $a1, stateNameIllanois	#string to compare to
+	la $a1, stateNameIllinois	#string to compare to
 	move $t1, $a1
 	li $t4, 0			#reset counter
 	li $t5, 7			#change counter limit
 
-compareloopIllanois:
-	beq $t4,$t5,stringsEqualIllanois
+compareloopIllinois:
+	beq $t4,$t5,stringsEqualIllinois
 		lb $t2, 0($t0)	#load byte(character) for the user input string
 		lb $t3, 0($t1)	#load byte(character) for the base string
-		bne $t2, $t3, endloopIllanois	#branch off loop if characters aren't equal
+		bne $t2, $t3, endloopIllinois	#branch off loop if characters aren't equal
 			addi $t0, $t0, 1	#move to next letter in user input
 			addi $t1, $t1, 1	#move to next letter in base string
 			addi $t4, $t4, 1	#i++
-			j compareloopIllanois	#loop
-endloopIllanois:
+			j compareloopIllinois	#loop
+endloopIllinois:
 	j compareIndiana	#jump to next comparison
 
-stringsEqualIllanois:
-	la $a0, Illanois	#load the path for Illanois.txt
+stringsEqualIllinois:
+	la $a0, Illinois	#load the path for Illinois.txt
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 	8	# deallocate space in stack
@@ -719,7 +776,7 @@ compareloopKentucky:
 			addi $t4, $t4, 1	#i++
 			j compareloopKentucky	#loop
 endloopKentucky:
-	j compareLouisianna	#jump to next comparison
+	j compareLouisiana	#jump to next comparison
 
 stringsEqualKentucky:
 	la $a0, Kentucky	#load the path for Kentucky.txt
@@ -728,27 +785,27 @@ stringsEqualKentucky:
 	addi $sp, $sp, 	8	# deallocate space in stack
 	jr $ra			#return
 
-compareLouisianna:
+compareLouisiana:
 	move $t0, $s7			#string entered by user
-	la $a1, stateNameLouisianna	#string to compare to
+	la $a1, stateNameLouisiana	#string to compare to
 	move $t1, $a1
 	li $t4, 0			#reset counter
 	li $t5, 7			#change counter limit
 
-compareloopLouisianna:
-	beq $t4,$t5,stringsEqualLouisianna
+compareloopLouisiana:
+	beq $t4,$t5,stringsEqualLouisiana
 		lb $t2, 0($t0)	#load byte(character) for the user input string
 		lb $t3, 0($t1)	#load byte(character) for the base string
-		bne $t2, $t3, endloopLouisianna	#branch off loop if characters aren't equal
+		bne $t2, $t3, endloopLouisiana	#branch off loop if characters aren't equal
 			addi $t0, $t0, 1		#move to next letter in user input
 			addi $t1, $t1, 1		#move to next letter in base string
 			addi $t4, $t4, 1		#i++
-			j compareloopLouisianna	#loop
-endloopLouisianna:
+			j compareloopLouisiana	#loop
+endloopLouisiana:
 	j compareMaine		#jump to next comparison
 
-stringsEqualLouisianna:
-	la $a0, Louisianna	#load the path for Louisianna.txt
+stringsEqualLouisiana:
+	la $a0, Louisiana	#load the path for Louisiana.txt
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 	8	# deallocate space in stack
@@ -1602,10 +1659,11 @@ stringsEqual1990:
 	move $t0, $a0			#move into $t0
 	sb $t0, testbuffer+2		#store into the new label at the next byte
 	
-	lw $ra, 0($fp)		# restore return address
-	lw $fp, 4($fp)		# restore frame pointer
-	addi $sp, $sp, 	8	# deallocate space in stack
-	jr $ra				#return
+	#lw $ra, 0($fp)		# restore return address
+	#lw $fp, 4($fp)		# restore frame pointer
+	#addi $sp, $sp, 	8	# deallocate space in stack
+	#jr $ra				#return
+	j compareToMax
 
 compare2000:
 	li $t3, 2000
@@ -1626,11 +1684,11 @@ stringsEqual2000:
 	move $t0, $a0
 	sb $t0, testbuffer+2	
 	
-	lw $ra, 0($fp)		# restore return address
-	lw $fp, 4($fp)		# restore frame pointer
-	addi $sp, $sp, 	8	# deallocate space in stack
-	jr $ra				#return
-	
+	#lw $ra, 0($fp)		# restore return address
+	#lw $fp, 4($fp)		# restore frame pointer
+	#addi $sp, $sp, 	8	# deallocate space in stack
+	#jr $ra				#return
+	j compareToMax
 compare2010:
 	li $t3, 2010
 	beq $t2,$t3,stringsEqual2010
@@ -1650,11 +1708,11 @@ stringsEqual2010:
 	move $t0, $a0
 	sb $t0, testbuffer+2	
 	
-	lw $ra, 0($fp)		# restore return address
-	lw $fp, 4($fp)		# restore frame pointer
-	addi $sp, $sp, 	8	# deallocate space in stack
-	jr $ra			#return
-	
+	#lw $ra, 0($fp)		# restore return address
+	#lw $fp, 4($fp)		# restore frame pointer
+	#addi $sp, $sp, 	8	# deallocate space in stack
+	#jr $ra			#return
+	j compareToMax
 compare2020:
 	li $t3, 2020
 	beq $t2,$t3,stringsEqual2020
@@ -1674,10 +1732,30 @@ stringsEqual2020:
 	move $t0, $a0
 	sb $t0, testbuffer+2	
 	
+	#lw $ra, 0($fp)		# restore return address
+	#lw $fp, 4($fp)		# restore frame pointer
+	#addi $sp, $sp, 	8	# deallocate space in stack
+	#jr $ra			#return
+	j compareToMax
+	
+compareToMax:
+	la $a0, buffer
+	lb $a0, 0($a0)
+	move $t0, $a0
+	sb $t0, tempcurrent
+	la $a0, buffer
+	lb $a0, 1($a0)
+	move $t0, $a0
+	sb $t0, tempcurrent+1
+	la $a0, buffer
+	lb $a0, 2($a0)
+	move $t0, $a0
+	sb $t0, tempcurrent+2	
+	
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 	8	# deallocate space in stack
-	jr $ra			#return
+	jr $ra			#return	
 	
 invalidYear:
 	li $v0, 4		#print string telling the user they inputted an invalid year
