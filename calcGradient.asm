@@ -57,6 +57,7 @@ define:
 	.eqv TEMP_MIN 10
 
 .text
+.globl update_map
 main:
 	move $fp, $sp	# init stack
 	
