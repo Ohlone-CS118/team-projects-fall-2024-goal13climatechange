@@ -1,24 +1,9 @@
 .data
-	Alabama:		.asciiz	"States/Alabama.txt"
-	Alaska:			.asciiz	"States/Alaska.txt"
-	Arizona:		.asciiz	"States/Arizona.txt"
-
 	temperature_buffer: .space 4	# allocate space for faciltating reading in temperatures
 
 .text
 .globl readTemp
 main:
-	move $fp, $sp		# initialize frame pointer at start of stack
-
-	la $a0, Alabama
-	li $a1, 1
-	jal readTemp
-
-	move $t0, $v0		# move result to $t0
-
-	li $v0, 1		# print result
-	move $a0, $t0
-	syscall
 
 	li $v0, 10		# safe exit
 	syscall
@@ -56,9 +41,11 @@ readTemp:
 readTemp_loop:
 	bgt $s2, $s0, readTemp_loopEnd	# if requested temp has already been read, stop reading
 	jal readTemp_readTemp	# read 1 temperature from the file
-	beq $v0, -1, readTemp_loopEnd	# if end of file is reached, stop reading
+	#beq $v0, -1, readTemp_loopEnd_EOF	# if end of file is reached, stop reading
 	addi $s2, $s2, 1	# else, increment counter by 1
 	j readTemp_loop		# else loop
+readTemp_loopEnd_EOF:
+	li $v0, 0		# reset $v0 to 0
 readTemp_loopEnd:
 	move $t0, $v0		# stash result in $t0
 	li $v0, 16		# close file
@@ -67,11 +54,11 @@ readTemp_loopEnd:
 
 	move $v0, $t0		# move result back to $v0
 
-	lw $ra, 0($fp)		# restore return address
-	lw $fp, 4($fp)		# restore original frame pointer
 	lw $s0, 8($fp)		# restore saved registers
 	lw $s1, 12($fp)
 	lw $s2, 16($fp)
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore original frame pointer
 	addi $sp, $sp, 20	# pop everything off stack
 	jr $ra			# return
 
