@@ -1,4 +1,16 @@
+# DISPLAY INFO
+# project natively runs at 256x128
+# set display to:
+#	Pixels width and height to 2x2
+#	Display width and height to 512x256
+#	Base address = 0x10010000
+# alternatively set display to:
+#	Pixels width and height to 4x4
+#	Display width and height to 1024x512
+#	Base address = 0x10010000
+
 .data
+display:	.space	131072	# reserve space for 256x128 display or else everything below gets overwritten and the computer explodes (i am on my 4th laptop in the past hour send help)
 Alabama:		.asciiz	"States/Alabama.txt"
 Alaska:			.asciiz	"States/Alaska.txt"
 Arizona:		.asciiz	"States/Arizona.txt"
@@ -121,7 +133,16 @@ stateDifference:	.asciiz	"\nThe difference in average temperature from the reque
 main:	
 	move $fp, $sp			#initialize the stack
 	
+	jal draw_boot			# draw the amazing boot screen
+	# sound event here
+	jal draw_map
+
+main_loop:
+
 	jal getYear			#call the function to get user input for decade
+
+	move $a0, $s6			# move the year into an argument register
+	jal update_map
 	
 	jal getState			#call the function to get user input for state
 	
@@ -198,9 +219,13 @@ loopEndCurrent:
 	
 	jal endFunction		#call endFunction to get user input for whether they want to continue using the program
 	jal endCompare		#call endCompare function to compare the user input to strings "no" and "yes"
-	j main			#loop the program
+	j main_loop			#loop the program
 
 end:
+	jal self_test
+	# sound event here
+	jal draw_credits
+
 	li $v0, 10			#exit safely
 	syscall
 
