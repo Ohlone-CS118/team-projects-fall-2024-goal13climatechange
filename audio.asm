@@ -1,3 +1,10 @@
+# Description:
+# This file simulates a user interaction
+# where different musical notes from the song "Auld Lang Syne"
+# are played at various events such as the boot screen, 
+# year prompt, state prompt, success message, and end program.
+# Each event plays three notes from the song, providing
+# auditory feedback for the user.
 .text
 
 # Function: play_intro_music
