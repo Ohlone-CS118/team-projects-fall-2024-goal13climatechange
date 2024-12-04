@@ -7,6 +7,84 @@
 # auditory feedback for the user.
 .text
 
+main:
+.globl play_intro_2
+.globl play_year_prompt_music
+.globl play_state_prompt_music
+.globl play_success_music
+.globl play_end_music
+	jal play_intro_2
+
+	li $v0, 10	# exit safely
+	syscall
+
+play_intro_2:
+	li $a2, 0    # Piano instrument
+	li $a3, 80    # Medium volume
+	li $v0, 33
+	
+	li $a0, 66	# F#
+	li $a1, 600
+	syscall
+
+	li $a0, 64	# E
+	li $a1, 600
+	syscall
+
+	li $a0, 61	# C
+	li $a1, 200
+	syscall
+
+	li $a0, 61	# C
+	li $a1, 400
+	syscall
+
+	li $a0, 57	# A
+	li $a1, 400
+	syscall
+
+	li $a0, 59	# B
+	li $a1, 600
+	syscall
+
+	li $a0, 57	# A
+	li $a1, 200
+	syscall
+
+	li $a0, 59	# B
+	li $a1, 400
+	syscall
+
+	li $a0, 61	# C#
+	li $a1, 200
+	syscall
+	
+	li $a0, 59	# B
+	li $a1, 200
+	syscall
+
+	li $a0, 57	# A
+	li $a1, 600
+	syscall
+
+	li $a0, 54	# F#
+	li $a1, 200
+	syscall
+
+	li $a0, 54	# F#
+	li $a1, 400
+	syscall
+
+	li $a0, 52	# E
+	li $a1, 400
+	syscall
+
+	li $a0, 57	# A
+	li $a1, 1200
+	syscall
+
+	jr $ra
+
 # Function: play_intro_music
 # "Auld Lang Syne"
 play_intro_music:
