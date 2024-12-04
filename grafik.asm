@@ -82,6 +82,58 @@ define:
 .globl self_test
 .globl draw_map
 
+.globl draw_alabama
+.globl draw_alaska
+.globl draw_arizona
+.globl draw_arkansas
+.globl draw_california
+.globl draw_colorado
+.globl draw_connecticut
+.globl draw_delaware
+.globl draw_florida
+.globl draw_georgia
+.globl draw_hawaii
+.globl draw_idaho
+.globl draw_illinois
+.globl draw_indiana
+.globl draw_iowa
+.globl draw_kansas
+.globl draw_kentucky
+.globl draw_louisiana
+.globl draw_maine
+.globl draw_maryland
+.globl draw_massachusetts
+.globl draw_michigan
+.globl draw_minnesota
+.globl draw_mississippi
+.globl draw_missouri
+.globl draw_montana
+.globl draw_nebraska
+.globl draw_nevada
+.globl draw_newhampshire
+.globl draw_newjersey
+.globl draw_newmexico
+.globl draw_vermont
+.globl draw_newyork
+.globl draw_northcarolina
+.globl draw_northdakota
+.globl draw_ohio
+.globl draw_oklahoma
+.globl draw_oregon
+.globl draw_pennsylvania
+.globl draw_rhodeisland
+.globl draw_southcarolina
+.globl draw_southdakota
+.globl draw_tennessee
+.globl draw_texas
+.globl draw_utah
+.globl draw_virginia
+.globl draw_washington
+.globl draw_washingtondc
+.globl draw_westvirginia
+.globl draw_wisconsin
+.globl draw_wyoming
+
 main:
 	move $fp, $sp	# initialize stack, move frame pointer to end of stack
 	
