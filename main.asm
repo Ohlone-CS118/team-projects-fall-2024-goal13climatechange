@@ -135,15 +135,17 @@ main:
 	
 	jal draw_boot			# draw the amazing boot screen
 	# sound event here
-	jal draw_map
+	jal play_intro_2		# play intro sound
+	jal draw_map			# draw map on screen
 
 main_loop:
-
+	jal play_year_prompt_music	# prompt year sound
 	jal getYear			#call the function to get user input for decade
 
 	move $a0, $s6			# move the year into an argument register
 	jal update_map
 	
+	jal play_state_prompt_music	# prompt state sound
 	jal getState			#call the function to get user input for state
 	
 	li $v0, 4			#print the newline
@@ -216,6 +218,8 @@ loopEndCurrent:
 	
 	li $v0, 3		#print the difference
 	syscall
+
+	jal play_success_music
 	
 	jal endFunction		#call endFunction to get user input for whether they want to continue using the program
 	jal endCompare		#call endCompare function to compare the user input to strings "no" and "yes"
@@ -223,6 +227,7 @@ loopEndCurrent:
 
 end:
 	jal self_test
+	jal play_end_music
 	# sound event here
 	jal draw_credits
 
