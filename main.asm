@@ -878,10 +878,36 @@ compareloopMaine:
 			addi $t4, $t4, 1	#i++
 			j compareloopMaine	#loop
 endloopMaine:
+	j compareMaryland	#jump to next comparison
+	
+stringsEqualMaine:
+	la $a0, Maine		#load the path for Maine.txt
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 	8	# deallocate space in stack
+	jr $ra			#return
+
+compareMaryland:
+	move $t0, $s7			#string entered by user
+	la $a1, stateNameMaryland	#string to compare to
+	move $t1, $a1
+	li $t4, 0			#reset counter
+	li $t5, 7			#change counter limit
+
+compareloopMaryland:
+	beq $t4,$t5,stringsEqualMaryland
+		lb $t2, 0($t0)	#load byte(character) for the user input string
+		lb $t3, 0($t1)	#load byte(character) for the base string
+		bne $t2, $t3, endloopMaryland	#branch off loop if characters aren't equal
+			addi $t0, $t0, 1	#move to next letter in user input
+			addi $t1, $t1, 1	#move to next letter in base string
+			addi $t4, $t4, 1	#i++
+			j compareloopMaryland	#loop
+endloopMaryland:
 	j compareMassachusetts	#jump to next comparison
 
-stringsEqualMaine:
-	la $a0, Maine		#load the path for Kentucky.txt
+stringsEqualMaryland:
+	la $a0, Maryland	#load the path for Maryland.txt
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 	8	# deallocate space in stack
@@ -1795,16 +1821,6 @@ compareToMax:
 	addi $sp, $sp, 	8	# deallocate space in stack
 	jr $ra			#return	
 	
-#invalidYear:
-#	li $v0, 4		#print string telling the user they inputted an invalid year
-#	la $a0, invalidyear
-#	syscall
-	
-#	j end			#ends the program
-	
-#precondition:	$a0 is equal to the file path
-#		$a1 is equal to the buffer
-#postcondition:	The buffer address holds the file text
 readFile:
 	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
 	sw $ra, 0($sp)		# backup return address
