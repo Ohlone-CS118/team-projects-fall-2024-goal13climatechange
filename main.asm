@@ -269,7 +269,36 @@ getYear:
 	syscall
 
 	move $s6, $v0			#move into a register for grafik.asm(?) and compare
+
+check1990:
+	move $t2, $s6			#load the user inputted integer for the decade
+	li $t3, 1990			#load the decade to compare to
+	beq $t2, $t3, validYear	#if they are equal then branch to validYear
+	j check2000			#jump to next comparison
+
+check2000:
+	li $t3, 2000
+	beq $t2, $t3,validYear
+	j check2010
+
+check2010:
+	li $t3, 2010
+	beq $t2,$t3,validYear
+	j check2020
 	
+check2020:
+	li $t3, 2020
+	beq $t2,$t3,validYear
+	j invalidYear	
+
+invalidYear:
+	li $v0, 4		#print string telling the user they inputted an invalid year
+	la $a0, invalidyear
+	syscall
+	
+	j end			#ends the program
+	
+validYear:
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 	8	# deallocate space in stack
@@ -1729,7 +1758,7 @@ stringsEqual2010:
 compare2020:
 	li $t3, 2020
 	beq $t2,$t3,stringsEqual2020
-	j invalidYear
+	j end
 
 stringsEqual2020:
 	la $a0, buffer
@@ -1766,12 +1795,12 @@ compareToMax:
 	addi $sp, $sp, 	8	# deallocate space in stack
 	jr $ra			#return	
 	
-invalidYear:
-	li $v0, 4		#print string telling the user they inputted an invalid year
-	la $a0, invalidyear
-	syscall
+#invalidYear:
+#	li $v0, 4		#print string telling the user they inputted an invalid year
+#	la $a0, invalidyear
+#	syscall
 	
-	j end			#ends the program
+#	j end			#ends the program
 	
 #precondition:	$a0 is equal to the file path
 #		$a1 is equal to the buffer
