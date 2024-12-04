@@ -1655,10 +1655,6 @@ stringsEqual1990:
 	move $t0, $a0			#move into $t0
 	sb $t0, testbuffer+2		#store into the new label at the next byte
 	
-	#lw $ra, 0($fp)		# restore return address
-	#lw $fp, 4($fp)		# restore frame pointer
-	#addi $sp, $sp, 	8	# deallocate space in stack
-	#jr $ra				#return
 	j compareToMax
 
 compare2000:
@@ -1680,10 +1676,6 @@ stringsEqual2000:
 	move $t0, $a0
 	sb $t0, testbuffer+2	
 	
-	#lw $ra, 0($fp)		# restore return address
-	#lw $fp, 4($fp)		# restore frame pointer
-	#addi $sp, $sp, 	8	# deallocate space in stack
-	#jr $ra				#return
 	j compareToMax
 compare2010:
 	li $t3, 2010
@@ -1728,10 +1720,6 @@ stringsEqual2020:
 	move $t0, $a0
 	sb $t0, testbuffer+2	
 	
-	#lw $ra, 0($fp)		# restore return address
-	#lw $fp, 4($fp)		# restore frame pointer
-	#addi $sp, $sp, 	8	# deallocate space in stack
-	#jr $ra			#return
 	j compareToMax
 	
 compareToMax:
