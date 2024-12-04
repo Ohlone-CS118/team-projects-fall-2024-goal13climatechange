@@ -102,19 +102,20 @@ stateNameWyoming:		.asciiz	"Wyoming"
 endProgramYes:			.asciiz	"yes"
 endProgramNo:			.asciiz	"no\n"
 
-state:			.space 20
+state:			.space 900
 stateprompt:		.asciiz "Enter a state(such as North Dakota, Alaska, New Hampshire): "
 year:			.space 4
 yearprompt:		.asciiz	"Enter a Decade from the following(1990, 2000, 2010, 2020): "
 newline:		.asciiz	"\n"
-endProgramInput:	.space 4
+endProgramInput:	.space 5
 endProgramString:	.asciiz	"\nWould you like to continue using the program? Please enter yes/no: "
 invalidEnd:		.asciiz	"\nIt can't be that hard to type yes or no"
 
-testbuffer:		.space	4
+testbuffer:		.space	400
 invalidyear:		.asciiz	"The year entered is invalid please try again with 1990, 2000, 2010, or 2020."
 invalidstate:		.asciiz	"The state entered is invalid please make sure you capitalised the beginning of each word and included spaces."
-
+stateAverage:		.asciiz	"The average temperature at the requested decade is: "
+stateDifference:	.asciiz	"The difference in average temperature from the requested decade with the 2020s is: "
 .text
 main:	
 	move $fp, $sp			#initialize the stack
@@ -136,6 +137,10 @@ main:
 	
 	li $v0, 4			#print the exact temperature requested
 	la $a0, testbuffer
+	syscall
+	
+	li $v0, 16		#close file
+	move $a0, $s2		#set the file handler
 	syscall
 	
 	jal endFunction			#call endFunction to get user input for whether they want to continue using the program
@@ -161,7 +166,7 @@ getState:
 	li $v0, 8
 	li $a1, 20			#max input length(20 because why not)
 	syscall
-
+	
 	move $s7, $a0		#store in $s7 for compare function
 	
 	lw $ra, 0($fp)		# restore return address
@@ -206,7 +211,7 @@ endFunction:
 	
 	li $v0, 8		#read the input
 	la $a0, endProgramInput
-	li $a1, 4		#max length of input
+	li $a1, 5		#max length of input
 	syscall
 	
 	move $s7, $a0		#move the input into $s7 for comparison later
@@ -1712,7 +1717,7 @@ readFile:
 	add $s4, $s3, $s1	#insert the terminating null character (\0)
 	sb $zero, 0($s4)	
 	
-	li $v0, 16		#close file
+	#li $v0, 16		#close file
 	move $a0, $s2		#set the file handler
 	
 	lw $ra, 0($fp)		# restore return address
