@@ -4,7 +4,7 @@ Alaska:			.asciiz	"States/Alaska.txt"
 Arizona:		.asciiz	"States/Arizona.txt"
 Arkansas:		.asciiz	"States/Arkansas.txt"
 California:		.asciiz	"States/California.txt"
-Colorado:		.asciiz	"States/Colorodo.txt"
+Colorado:		.asciiz	"States/Colorado.txt"
 Connecticut:		.asciiz	"States/Connecticut.txt"
 Delaware:		.asciiz	"States/Delaware.txt"
 Florida:		.asciiz	"States/Florida.txt"
@@ -143,7 +143,7 @@ main:
 convertLoop:
 	lb $t1, 0($t0)			#load the current character
 	beq $t1, $zero, loopEnd	#if null terminator, end loop
-		sub $t2, $t1, 48	#convert ASCII character to digit (char - '0')
+		sub $t2, $t1, 48	#convert ASCII character to digit
 		mul $t3, $t3, $t4	#multiply current result by 10
 		add $t3, $t3, $t2	#add the current digit to the result
 		addi $t0, $t0, 1	#move to the next character
@@ -173,7 +173,7 @@ loopEnd:
 convertLoopCurrent:
 	lb $t1, 0($t0)				#load the current character
 	beq $t1, $zero, loopEndCurrent		#if null terminator, end loop
-		sub $t2, $t1, 48		#convert ASCII character to digit (char - '0')
+		sub $t2, $t1, 48		#convert ASCII character to digit
 		mul $t3, $t3, $t4		#multiply current result by 10
 		add $t3, $t3, $t2		#add the current digit to the result
 		addi $t0, $t0, 1		#move to the next character
@@ -195,10 +195,6 @@ loopEndCurrent:
 	
 	li $v0, 3		#print the difference
 	syscall
-	
-	li $v0, 16		#close file
-	move $a0, $s2		#set the file handler
-	syscall			#execute
 	
 	jal endFunction		#call endFunction to get user input for whether they want to continue using the program
 	jal endCompare		#call endCompare function to compare the user input to strings "no" and "yes"
@@ -1795,8 +1791,9 @@ readFile:
 	add $s4, $s3, $s1	#insert the terminating null character (\0)
 	sb $zero, 0($s4)	
 	
-	#li $v0, 16		#close file
+	li $v0, 16		#close file
 	move $a0, $s2		#set the file handler
+	syscall			#execute
 	
 	lw $ra, 0($fp)		# restore return address
 	lw $fp, 4($fp)		# restore frame pointer
