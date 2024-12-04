@@ -1,3 +1,13 @@
+# IMAGE CREDITS
+# Map of USA https://commons.wikimedia.org/wiki/File:Map_of_USA_with_state_names.svg
+# Bald eagle https://commons.wikimedia.org/wiki/File:Bald_eagle_about_to_fly_in_Alaska_(2016).jpg
+# Epic truck https://commons.wikimedia.org/wiki/File:Freightliner_M2_106_6x4_2014_(14240376744).jpg
+# Explosion https://commons.wikimedia.org/wiki/File:A_detonation_erupts_as_U.S._Marines_with_the_1st_Explosive_Ordnance_Disposal_Company,_Combat_Logistics_Regiment_2_conduct_a_demolition_operation_in_Helmand_province,_Afghanistan,_March_17,_2013_130317-M-KS710-206.jpg
+# The DOnald https://commons.wikimedia.org/wiki/File:Donald_Trump_official_portrait.jpg
+# Mount Rushmore https://commons.wikimedia.org/wiki/File:Mount_Rushmore_detail_view_(100MP).jpg
+# Special Agent Jack Decker (and the other guy) https://www.adultswim.com/videos/decker/
+# The flag is my own personal photo
+
 .data
 # set display to:
 #	Pixels width and height to 2x2
@@ -10,6 +20,7 @@
 	print_buffer_char:	.space 4 # character buffer, 4 bytes (to prevent word alignment issues)
 	boot:		.asciiz "graphics/boot128.ppm"
 	map:		.asciiz "graphics/map128.ppm"
+	credits: 	.asciiz "graphics/credits.ppm"
 	map_alabama:	.asciiz "graphics/alabama.pbm"
 	map_alaska:		.asciiz "graphics/alaska.pbm"
 	map_arizona:	.asciiz "graphics/arizona.pbm"
@@ -81,6 +92,7 @@ define:
 .globl draw_boot
 .globl self_test
 .globl draw_map
+.globl draw_credits
 
 .globl draw_alabama
 .globl draw_alaska
@@ -140,6 +152,7 @@ main:
 	jal draw_boot
 	jal draw_map
 	jal self_test
+	jal draw_credits
 	
 	li $v0, 10	# exit safely
 	syscall
@@ -288,6 +301,25 @@ draw_map:
 	move $fp, $sp		# move frame pointer to point at current top of stack
 
 	la $a0, map	# set image path
+	li $a1, 0	# x-offset 0
+	li $a2, 0	# y-offset 0
+	jal printer
+
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
+	addi $sp, $sp, 8	# deallocate space in stack
+	jr $ra			# return
+
+# draw the credits
+# precondition: no
+# postcondition: credits drawn
+draw_credits:
+	subi $sp, $sp, 8	# allocate space in stack to store $fp and $ra
+	sw $ra, 0($sp)		# backup return address
+	sw $fp, 4($sp)		# backup frame pointer
+	move $fp, $sp		# move frame pointer to point at current top of stack
+
+	la $a0, credits	# set image path
 	li $a1, 0	# x-offset 0
 	li $a2, 0	# y-offset 0
 	jal printer
