@@ -1500,8 +1500,6 @@ printer_end:
 	move $a0, $s3	# load file descriptor
 	syscall
 
-	lw $ra, 0($fp)		# restore return address
-	lw $fp, 4($fp)		# restore frame pointer
 	lw $s0, 8($fp)		# restore saved registers
 	lw $s1, 12($fp)
 	lw $s2, 16($fp)
@@ -1510,6 +1508,8 @@ printer_end:
 	lw $s5, 28($fp)
 	lw $s6, 32($fp)
 	lw $s7, 36($fp)
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 40	# deallocate space in stack
 	jr $ra			# return
 	
@@ -1660,8 +1660,6 @@ key_printer_end:
 	move $a0, $s3	# load file descriptor
 	syscall
 
-	lw $ra, 0($fp)		# restore return address
-	lw $fp, 4($fp)		# restore frame pointer
 	lw $s0, 8($fp)		# restore saved registers
 	lw $s1, 12($fp)
 	lw $s2, 16($fp)
@@ -1670,6 +1668,8 @@ key_printer_end:
 	lw $s5, 28($fp)
 	lw $s6, 32($fp)
 	lw $s7, 36($fp)
+	lw $ra, 0($fp)		# restore return address
+	lw $fp, 4($fp)		# restore frame pointer
 	addi $sp, $sp, 40	# deallocate space in stack
 	jr $ra			# return
 	
