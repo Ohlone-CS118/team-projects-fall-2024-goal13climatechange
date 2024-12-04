@@ -16,8 +16,6 @@
 # This will make our screen width 256x128 (512/2 = 256)
 #	256 x 128 x 4 = 524288 bytes
 	display:	.space	131072	# allocate space for 256x128
-	print_buffer:		.space 4 # character buffer, 4 bytes
-	print_buffer_char:	.space 4 # character buffer, 4 bytes (to prevent word alignment issues)
 	boot:		.asciiz "graphics/boot128.ppm"
 	map:		.asciiz "graphics/map128.ppm"
 	credits: 	.asciiz "graphics/credits.ppm"
@@ -73,6 +71,9 @@
 	map_westvirginia:	.asciiz "graphics/westvirginia.pbm"
 	map_wisconsin:	.asciiz "graphics/wisconsin.pbm"
 	map_wyoming:	.asciiz "graphics/wyoming.pbm"
+	graphic_offset:		.space 1
+	print_buffer:		.space 4 # character buffer, 4 bytes
+	print_buffer_char:	.space 4 # character buffer, 4 bytes (to prevent word alignment issues)
 	
 define:
 # screen information
